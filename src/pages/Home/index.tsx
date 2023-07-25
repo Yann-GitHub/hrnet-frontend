@@ -5,11 +5,10 @@ function Home() {
   return (
       <div>
         <img src={ImgLogo} alt="logo" />
-        <h2>
-          Page Home
-        </h2>
+        <h1>HRNet</h1>
+        <h2>Create Employee</h2>
         <Link to="/employee-list" >
-          Page liste d'employés
+        View Current Employees
         </Link>
       </div>
   )

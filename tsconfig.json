@@ -26,6 +26,8 @@
     "src",
     "tailwind.config.js",
     "postcss.config.js",
+    ".eslintrc.cjs",
+    "vit.config.ts",
   ],
   "references": [
     {
