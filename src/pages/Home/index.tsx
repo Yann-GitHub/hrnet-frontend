@@ -1,17 +1,20 @@
-import { Link } from "react-router-dom"
-import ImgLogo from "../../assets/logo-wh.jpg"
+// import { Link } from 'react-router-dom';
+import Welcome from '../../assets/welcome.svg';
 
 function Home() {
-  return (
-      <div>
-        <img src={ImgLogo} alt="logo" />
-        <h1>HRNet</h1>
-        <h2>Create Employee</h2>
-        <Link to="/employee-list" >
-        View Current Employees
-        </Link>
-      </div>
-  )
+    return (
+        <div className="section-min-height flex flex-col justify-center items-center">
+            <img src={Welcome} alt="Welcome" className="w-1/3" />
+            <h1 className="text-4xl mt-6 text-blue-600">HRnet</h1>
+            <p className="text-center">
+                Web application designed for managing employee records.
+            </p>
+            <div className="flex flex-col">
+                {/* <Link to="/employee-list">Link - Employees list</Link>
+                <Link to="/create-employee">Link - Create Employees</Link> */}
+            </div>
+        </div>
+    );
 }
 
-export default Home
+export default Home;

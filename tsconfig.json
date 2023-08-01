@@ -27,7 +27,7 @@
     "tailwind.config.js",
     "postcss.config.js",
     ".eslintrc.cjs",
-    "vit.config.ts",
+    "vite.config.ts",
   ],
   "references": [
     {
