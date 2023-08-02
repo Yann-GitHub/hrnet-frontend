@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 // import Logo from '../../assets/logo-wh.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faList } from '@fortawesome/free-solid-svg-icons';
+import '@fontsource/courgette';
 
 function Header() {
     return (
         <nav className="sticky top-0 z-10 px-8 bg-blue-500 flex justify-between items-center text-white h-20 drop-shadow-lg">
             <NavLink to="/" className="">
-                <h1 className="text-5xl font-courgette">HRnet</h1>
+                <h1 className="text-5xl font-[courgette]">HRnet</h1>
                 {/* <img className="w-20" src={Logo} alt="Logo" /> */}
                 {/* <h1 className="sr-only">Argent Bank</h1> */}
             </NavLink>
