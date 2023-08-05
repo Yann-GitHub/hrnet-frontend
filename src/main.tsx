@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import { EmployeeContextProvider } from './context/employeeContext.tsx';
 
 // ReactDOM.createRoot(document.getElementById('root')!).render(
 //   <React.StrictMode>
@@ -13,7 +14,9 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
     ReactDOM.createRoot(rootElement).render(
         <React.StrictMode>
-            <App />
+            <EmployeeContextProvider>
+                <App />
+            </EmployeeContextProvider>
         </React.StrictMode>
     );
 }

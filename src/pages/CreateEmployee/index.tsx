@@ -1,6 +1,9 @@
 // import { Link } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
 import Join from '../../assets/join.svg';
 import states from '../../data/states.ts';
+
+import { useEmployeeContext } from '../../context/employeeContext.tsx';
 
 import { Button } from '@/components/ui/button';
 
@@ -44,7 +47,7 @@ import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 // import { Label } from '@/components/ui/label';
 
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import registerSchema from '@/validators/auth';
 import { z } from 'zod'; // input validation library - type safe
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -52,27 +55,58 @@ import { zodResolver } from '@hookform/resolvers/zod';
 type Inputs = z.infer<typeof registerSchema>; // infer the type of registerSchema
 
 function CreateEmployee() {
+    // const { handleSubmit, reset, watch } = useForm();
+
     const form = useForm<Inputs>({
         resolver: zodResolver(registerSchema),
         defaultValues: {
             firstname: '',
             lastname: '',
-            // dateOfBirth: '',
-            // startDate: '',
+            // dateOfBirth: new Date(),
+            // startDate: new Date(),
             street: '',
             city: '',
             state: '',
             zipCode: '',
             department: '',
         },
+        mode: 'onChange',
     }); // imported from react-hook-form
 
     console.log(form.watch()); // watch method from react-hook-form - provides access to the entire form state
 
+    const { employees, setEmployees } = useEmployeeContext();
+    // const [newEmployee, setNewEmployee] = useState<Inputs>({
+    //     firstname: '',
+    //     lastname: '',
+    //     dateOfBirth: new Date(),
+    //     startDate: new Date(),
+    //     street: '',
+    //     city: '',
+    //     state: '',
+    //     zipCode: '',
+    //     department: '',
+    // });
+
     function onSubmit(data: Inputs) {
         alert(JSON.stringify(data));
         console.log(data);
+        // Add the new employee to the list of employees
+        setEmployees([...employees, data]);
+
+        // setEmployees([...employees, newEmployee]);
+
+        // Reset the form to its default values
+        form.reset();
     }
+
+    // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+    // useEffect(() => {
+    //     if (isSubmitSuccessful) {
+    //         // Reset the form to its default values
+    //         reset();
+    //     }
 
     return (
         <div className="section-min-height flex flex-col justify-center items-center my-14">
@@ -352,6 +386,9 @@ function CreateEmployee() {
                                 )}
                             />
                             <Button type="submit">Submit</Button>
+                            <Button type="button" onClick={() => form.reset()}>
+                                Reset
+                            </Button>
                         </form>
                     </Form>
                 </CardContent>
