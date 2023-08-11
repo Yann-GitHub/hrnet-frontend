@@ -54,6 +54,18 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 type Inputs = z.infer<typeof registerSchema>; // infer the type of registerSchema
 
+type InputsFormated = {
+    firstname: string;
+    lastname: string;
+    dateOfBirth: string;
+    startDate: string;
+    street: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    department: string;
+};
+
 function CreateEmployee() {
     // const { handleSubmit, reset, watch } = useForm();
 
@@ -91,8 +103,27 @@ function CreateEmployee() {
     function onSubmit(data: Inputs) {
         alert(JSON.stringify(data));
         console.log(data);
+
+        // console.log(typeof data.dateOfBirth);
+
+        // Format the dateOfBirth and startDate before storing them in the context
+        // const formattedData: Inputs = {
+        //     ...data,
+        //     dateOfBirth: new Date(format(data.dateOfBirth, 'MM/dd/yyyy')),
+        //     startDate: new Date(format(data.startDate, 'MM/dd/yyyy')),
+        // };
+        const formattedData: InputsFormated = {
+            ...data,
+            dateOfBirth: format(data.dateOfBirth, 'MM/dd/yyyy'),
+            startDate: format(data.startDate, 'MM/dd/yyyy'),
+        };
+
         // Add the new employee to the list of employees
-        setEmployees([...employees, data]);
+        // setEmployees([...employees, data]);
+        setEmployees([...employees, formattedData]);
+
+        // Log the formatted data for verification
+        console.log('Formatted Data:', formattedData);
 
         // setEmployees([...employees, newEmployee]);
 
@@ -109,8 +140,8 @@ function CreateEmployee() {
     //     }
 
     return (
-        <div className="section-min-height flex flex-col justify-center items-center my-14">
-            <div className="flex flex-row justify-center items-center">
+        <div className="section-min-height flex flex-col justify-center items-center mb-14">
+            <div className="flex flex-row justify-center items-center mt-14">
                 {/* <h2 className="text-xl text-blue-600">Create Employee</h2> */}
                 <img src={Join} alt="join" className="w-1/3" />
             </div>
@@ -179,7 +210,8 @@ function CreateEmployee() {
                                                         {field.value ? (
                                                             format(
                                                                 field.value,
-                                                                'PPP'
+                                                                // 'PPP'
+                                                                'MM/dd/yyyy'
                                                             )
                                                         ) : (
                                                             <span>
@@ -233,7 +265,8 @@ function CreateEmployee() {
                                                         {field.value ? (
                                                             format(
                                                                 field.value,
-                                                                'PPP'
+                                                                // 'PPP'
+                                                                'MM/dd/yyyy'
                                                             )
                                                         ) : (
                                                             <span>
@@ -385,10 +418,15 @@ function CreateEmployee() {
                                     </FormItem>
                                 )}
                             />
-                            <Button type="submit">Submit</Button>
-                            <Button type="button" onClick={() => form.reset()}>
-                                Reset
-                            </Button>
+                            <div className="flex justify-end items-center">
+                                <Button type="submit">Submit</Button>
+                                <Button
+                                    type="button"
+                                    onClick={() => form.reset()}
+                                >
+                                    Reset
+                                </Button>
+                            </div>
                         </form>
                     </Form>
                 </CardContent>

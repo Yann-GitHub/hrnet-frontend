@@ -10,8 +10,6 @@ function Header() {
         <nav className="sticky top-0 z-10 px-8 bg-blue-500 flex justify-between items-center text-white h-20 drop-shadow-lg">
             <NavLink to="/" className="">
                 <h1 className="text-5xl font-[courgette]">HRnet</h1>
-                {/* <img className="w-20" src={Logo} alt="Logo" /> */}
-                {/* <h1 className="sr-only">Argent Bank</h1> */}
             </NavLink>
             <div className="flex gap-6">
                 <Link to="/create-employee" className="hover:text-blue-200">

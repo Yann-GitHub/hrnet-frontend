@@ -15,7 +15,7 @@ const registerSchema = z.object({
         .nonempty('Last name is required.')
         .min(3, { message: 'Minimum 3 characters' })
         .max(30, { message: 'Maximum 30 characters' }),
-    // dateOfBirth: z.string().min(2).max(50),
+    // dateOfBirth: z.string().nonempty('A date of birth is required.'),
     dateOfBirth: z.date({
         required_error: 'A date of birth is required.',
     }),

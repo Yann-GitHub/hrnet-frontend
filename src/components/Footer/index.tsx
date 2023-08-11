@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <footer className="bg-gray-800 flex flex-col justify-center items-center h-16">
+        <footer className="bg-gray-800 flex flex-col justify-center items-center h-20">
             <p className="text-white">
                 Copyright © 2023 HRnet by Wealth Health
             </p>
