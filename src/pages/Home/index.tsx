@@ -10,7 +10,7 @@ function Home() {
                     HRnet
                 </h1>
                 <p className="text-center">
-                    Web application designed for managing employee records.
+                    Human Resources Management System.
                 </p>
             </div>
             <div className="flex flex-col"></div>
