@@ -1,47 +1,10 @@
+import { InputsFormated } from '../../types/index';
 import { Button } from '@/components/ui/button';
-
-import {
-    ColumnDef,
-    ColumnFiltersState,
-    SortingState,
-    VisibilityState,
-    flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    useReactTable,
-} from '@tanstack/react-table';
-
-import registerSchema from '@/validators/auth';
-import { z } from 'zod'; // input validation library - type safe
-
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from 'lucide-react';
-
-type Inputs = z.infer<typeof registerSchema>; // infer the type of registerSchema
-
-type InputsFormated = {
-    firstname: string;
-    lastname: string;
-    dateOfBirth: string;
-    startDate: string;
-    street: string;
-    city: string;
-    state: string;
-    zipCode: string;
-    department: string;
-};
+import { ColumnDef } from '@tanstack/react-table'; // Type or Interface defined properties of a column
+import { ArrowUpDown } from 'lucide-react';
 
 export const columns: ColumnDef<InputsFormated>[] = [
     {
-        // accessorKey: 'firstname',
-        // header: 'First Name',
-        ///////////////////////
-        // accessorKey: 'firstname',
-        // header: 'First Name',
-        // cell: ({ row }) => (
-        //     <div className="capitalize">{row.getValue('firstname')}</div>
-        // ),
         accessorKey: 'firstname',
         header: ({ column }) => (
             <Button
@@ -57,20 +20,6 @@ export const columns: ColumnDef<InputsFormated>[] = [
         ),
     },
     {
-        // accessorKey: 'lastname',
-        // header: 'Last Name',
-        // enableSorting: true, // Activer le tri pour cette colonne
-        //     accessorKey: "lastname",
-        //     header: () => {
-        //   return (
-        //     <Button
-        //       variant="ghost"
-        //       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        //     >
-        //       Last name
-        //       <ArrowUpDown className="ml-2 h-4 w-4" />
-        //     </Button>
-        //   )
         accessorKey: 'lastname',
         header: ({ column }) => (
             <Button
@@ -86,8 +35,6 @@ export const columns: ColumnDef<InputsFormated>[] = [
         ),
     },
     {
-        // accessorKey: 'startDate',
-        // header: 'Start Date',
         accessorKey: 'startDate',
         header: ({ column }) => (
             <Button
@@ -103,8 +50,6 @@ export const columns: ColumnDef<InputsFormated>[] = [
         ),
     },
     {
-        // accessorKey: 'department',
-        // header: 'Department',
         accessorKey: 'department',
         header: ({ column }) => (
             <Button
@@ -120,8 +65,6 @@ export const columns: ColumnDef<InputsFormated>[] = [
         ),
     },
     {
-        // accessorKey: 'dateOfBirth',
-        // header: 'Date of Birth',
         accessorKey: 'dateOfBirth',
         header: ({ column }) => (
             <Button
@@ -137,8 +80,6 @@ export const columns: ColumnDef<InputsFormated>[] = [
         ),
     },
     {
-        // accessorKey: 'street',
-        // header: 'Street',
         accessorKey: 'street',
         header: ({ column }) => (
             <Button
@@ -154,8 +95,6 @@ export const columns: ColumnDef<InputsFormated>[] = [
         ),
     },
     {
-        // accessorKey: 'city',
-        // header: 'City',
         accessorKey: 'city',
         header: ({ column }) => (
             <Button
@@ -171,8 +110,6 @@ export const columns: ColumnDef<InputsFormated>[] = [
         ),
     },
     {
-        // accessorKey: 'state',
-        // header: 'State',
         accessorKey: 'state',
         header: ({ column }) => (
             <Button
@@ -188,8 +125,6 @@ export const columns: ColumnDef<InputsFormated>[] = [
         ),
     },
     {
-        // accessorKey: 'zipCode',
-        // header: 'Zip Code',
         accessorKey: 'zipCode',
         header: ({ column }) => (
             <Button

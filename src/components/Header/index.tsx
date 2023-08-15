@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-// import Logo from '../../assets/logo-wh.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faList } from '@fortawesome/free-solid-svg-icons';
 import '@fontsource/courgette';

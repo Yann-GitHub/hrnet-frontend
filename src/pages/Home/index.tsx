@@ -1,4 +1,3 @@
-// import { Link } from 'react-router-dom';
 import Welcome from '../../assets/welcome.svg';
 import '@fontsource/courgette';
 

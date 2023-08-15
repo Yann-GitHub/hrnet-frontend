@@ -1,19 +1,5 @@
-import { z } from 'zod';
-import registerSchema from '@/validators/auth';
 import { format } from 'date-fns';
-
-type Inputs = z.infer<typeof registerSchema>; // infer the type of registerSchema
-type InputsFormated = {
-    firstname: string;
-    lastname: string;
-    dateOfBirth: string;
-    startDate: string;
-    street: string;
-    city: string;
-    state: string;
-    zipCode: string;
-    department: string;
-};
+import { InputsFormated } from '../types/index';
 
 const initialEmployeeList: InputsFormated[] = [
     {
