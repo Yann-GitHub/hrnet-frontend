@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import Join from '../../assets/join.svg';
 import states from '../../data/states.ts';
 import { InputsFormated } from '../../types/index.ts';
 
 import { useEmployeeContext } from '../../context/employeeContext.tsx';
+
+import { Modal } from 'hrnet-react-modal-101';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -77,6 +80,24 @@ function CreateEmployee() {
 
     const { employees, setEmployees } = useEmployeeContext();
 
+    // Modal
+    const [isOpen, setIsOpen] = useState(true);
+
+    const openModal = () => {
+        setIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
+    // const customModalStyle = {
+    //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    //     border: '2px solid blue',
+    //     borderRadius: '10px',
+    //     padding: '20px',
+    // };
+
     function onSubmit(data: Inputs) {
         // alert(JSON.stringify(data));
         // console.log(data);
@@ -97,6 +118,26 @@ function CreateEmployee() {
 
     return (
         <div className="section-min-height flex flex-col justify-center items-center mb-14">
+            <Modal
+                isOpen={isOpen}
+                onClose={closeModal}
+                // modalCustomStyle={customModalStyle}
+            >
+                <h2 className="text-blue-500">Modal Content</h2>
+                <p>This is the content of the modal.</p>
+            </Modal>
+            {/* <div>
+                <button onClick={openModal}>Open Modal</button>
+                <Modal
+                    isOpen={isOpen}
+                    onClose={closeModal}
+                    modalCustomStyle={customModalStyle}
+                >
+                    <h2 className="text-blue-500">Modal Content</h2>
+                    <p>This is the content of the modal.</p>
+                </Modal>
+            </div> */}
+
             <div className="flex flex-row justify-center items-center mt-14">
                 <img src={Join} alt="join" className="w-1/3" />
             </div>
