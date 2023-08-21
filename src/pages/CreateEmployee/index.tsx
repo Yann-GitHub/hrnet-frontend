@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Join from '../../assets/join.svg';
 import states from '../../data/states.ts';
 import { InputsFormated } from '../../types/index.ts';
@@ -78,13 +78,21 @@ function CreateEmployee() {
     // watch method from react-hook-form - provides access to the entire form state
     // console.log(form.watch());
 
+    // Context - data list of employees
     const { employees, setEmployees } = useEmployeeContext();
 
     // Modal
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+
+    // useEffect(() => {
+    //     if (isOpen) {
+    //         openModal();
+    //     }
+    // }, [isOpen]);
 
     const openModal = () => {
         setIsOpen(true);
+        // setIsOpen((prevState) => !prevState);
     };
 
     const closeModal = () => {
@@ -114,6 +122,9 @@ function CreateEmployee() {
 
         // Reset the form to its default values
         form.reset();
+
+        // Open the modal
+        openModal();
     }
 
     return (
@@ -123,8 +134,11 @@ function CreateEmployee() {
                 onClose={closeModal}
                 // modalCustomStyle={customModalStyle}
             >
-                <h2 className="text-blue-500">Modal Content</h2>
-                <p>This is the content of the modal.</p>
+                <h2 className="text-blue-500">Employee Created!</h2>
+                <p>
+                    Congratulations! The new employee has been successfully
+                    added to the database."
+                </p>
             </Modal>
             {/* <div>
                 <button onClick={openModal}>Open Modal</button>
