@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Join from '../../assets/join.svg';
 import states from '../../data/states.ts';
 import { InputsFormated } from '../../types/index.ts';
@@ -16,7 +16,6 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-    // CardFooter,
 } from '@/components/ui/card';
 
 import {
@@ -34,7 +33,6 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-    // FormDescription,
 } from '@/components/ui/form';
 
 import {
@@ -84,30 +82,22 @@ function CreateEmployee() {
     // Modal
     const [isOpen, setIsOpen] = useState(false);
 
-    // useEffect(() => {
-    //     if (isOpen) {
-    //         openModal();
-    //     }
-    // }, [isOpen]);
-
     const openModal = () => {
         setIsOpen(true);
-        // setIsOpen((prevState) => !prevState);
     };
 
     const closeModal = () => {
         setIsOpen(false);
     };
 
-    // const customModalStyle = {
-    //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    //     border: '2px solid blue',
-    //     borderRadius: '10px',
-    //     padding: '20px',
-    // };
+    const customModalStyle = {
+        // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        // border: '2px solid blue',
+        borderRadius: '10px',
+        padding: '22px',
+    };
 
     function onSubmit(data: Inputs) {
-        // alert(JSON.stringify(data));
         // console.log(data);
 
         // Format the dateOfBirth and startDate before storing them in the context
@@ -129,28 +119,19 @@ function CreateEmployee() {
 
     return (
         <div className="section-min-height flex flex-col justify-center items-center mb-14">
-            <Modal
-                isOpen={isOpen}
-                onClose={closeModal}
-                // modalCustomStyle={customModalStyle}
-            >
-                <h2 className="text-blue-500">Employee Created!</h2>
-                <p>
-                    Congratulations! The new employee has been successfully
-                    added to the database."
-                </p>
-            </Modal>
-            {/* <div>
-                <button onClick={openModal}>Open Modal</button>
+            {isOpen && (
                 <Modal
                     isOpen={isOpen}
                     onClose={closeModal}
                     modalCustomStyle={customModalStyle}
                 >
-                    <h2 className="text-blue-500">Modal Content</h2>
-                    <p>This is the content of the modal.</p>
+                    <h2 className="text-blue-500">Employee Created!</h2>
+                    <p>
+                        Congratulations! The new employee has been successfully
+                        added to the database.
+                    </p>
                 </Modal>
-            </div> */}
+            )}
 
             <div className="flex flex-row justify-center items-center mt-14">
                 <img src={Join} alt="join" className="w-1/3" />
@@ -428,12 +409,6 @@ function CreateEmployee() {
                             />
                             <div className="flex justify-end items-center">
                                 <Button type="submit">Submit</Button>
-                                {/* <Button
-                                    type="button"
-                                    onClick={() => form.reset()}
-                                >
-                                    Reset
-                                </Button> */}
                             </div>
                         </form>
                     </Form>
