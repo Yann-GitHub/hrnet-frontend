@@ -82,3 +82,9 @@ Please ensure that you have these dependencies installed and up-to-date before r
 
 This project also relies on a custom package that is published on NPM under the name `hrnet-react-modal-101`.
 It is a simple modal component that is used in the app. You can find the source code of this package and its documentation [here](https://www.npmjs.com/package/hrnet-react-modal-101/v/1.0.4).
+
+## Deployment with Render.com
+
+The HRnet App has been successfully deployed using [Render.com](https://render.com/) and is accessible at the following URL: [https://hrnet-app.onrender.com](https://hrnet-app.onrender.com).
+
+Render.com provides a seamless and easy-to-use platform for deploying static sites. It automates the build and deployment process, making it simple to showcase your projects.
